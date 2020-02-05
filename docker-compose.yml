@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+  app:
+    build: ./containers/${WEBSERVER}
+    environment:
+      - LOG_LEVEL=${APP_LOG_LEVEL}
+    volumes:
+      - ../${PROJECT}:/var/www/html
+      - ./logs/php:/var/log/php
+      - ./logs/app:/log
+    restart: always
+
+  nginx:
+    build: ./containers/nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./logs/nginx/:/var/log/nginx
+      - ./src/app:/var/www/html
+    command: nginx -g "daemon off;"
+    restart: always
+
