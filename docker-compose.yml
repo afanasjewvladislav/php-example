@@ -11,6 +11,21 @@ services:
       - ./logs/app:/log
     restart: always
 
+  mysql:
+    build: containers/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./logs/mysql:/var/log/mysql
+      - ./data/mysql:/var/lib/mysql
+      - ./data/backup:/backup
+    restart: always
+
   nginx:
     build: ./containers/nginx
     ports:
