@@ -1,6 +1,6 @@
 CREATE TABLE users(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name TEXT,
+    name TEXT NOT NULL,
     middle_name TEXT,
     last_name TEXT NOT NULL,
     gender char(1) NOT NULL,
@@ -15,10 +15,11 @@ CREATE TABLE positions(
     name TEXT NOT NULL
 );
 
-CREATE TABLE division(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name TEXT NOT NULL,
-    type INT
+create table division
+(
+    id   int auto_increment primary key,
+    name text not null,
+    type_id int  null
 );
 
 CREATE TABLE division_type(
