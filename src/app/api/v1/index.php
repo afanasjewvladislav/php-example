@@ -82,7 +82,6 @@ switch ($data->type) {
         echo json_encode(array(getUsers()), JSON_UNESCAPED_UNICODE);
         return;
     case 'createUser':
-//        print_r($data->payload->name);
         $name = $data->payload->name;
         $middleName = $data->payload->middleName;
         $lastName = $data->payload->lastName;
