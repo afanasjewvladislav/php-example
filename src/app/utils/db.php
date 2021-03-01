@@ -23,13 +23,17 @@ class DataBase {
     }
 
 
-    public function select($query, $params = false) {
-        var_dump($query);
-        var_dump($params);
-        return true;
-//        $result_set = $this->mysqli->query($this->getQuery($query, $params));
-//        if (!$result_set) return false;
-//        return $this->resultSetToArray($result_set);
+    public function select($query) {
+        $res = $this->mysqli->query($query);
+        $result = [];
+        while($row = $res->fetch_assoc())
+        {
+            $result[] = $row;
+        }
+        if (!$result) {
+            return false;
+        }
+        return $result;
     }
 }
 
