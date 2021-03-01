@@ -35,6 +35,14 @@ class DataBase {
         }
         return $result;
     }
+
+    public function delete($query) {
+        $this->mysqli->query($query);
+    }
+
+    public function add($query) {
+        $this->mysqli->query($query);
+    }
 }
 
 
