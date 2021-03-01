@@ -29,5 +29,5 @@ stop: ## stop all containers
 app-composer-install: ## front composer install
 	@cd ../${PROJECT} && composer install
 
-app-composer: ## front composer update
-	@cd ./src/app && composer update
+front-dev: ## dev front
+	@cd ./src/front && npm run start
